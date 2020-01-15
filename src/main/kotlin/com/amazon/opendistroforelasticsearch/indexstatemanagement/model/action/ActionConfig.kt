@@ -62,7 +62,8 @@ abstract class ActionConfig(
         REPLICA_COUNT("replica_count"),
         FORCE_MERGE("force_merge"),
         NOTIFICATION("notification"),
-        SNAPSHOT("snapshot");
+        SNAPSHOT("snapshot"),
+        ALLOCATION("allocation");
 
         override fun toString(): String {
             return type
@@ -96,6 +97,7 @@ abstract class ActionConfig(
                     ActionType.FORCE_MERGE.type -> actionConfig = ForceMergeActionConfig.parse(xcp, index)
                     ActionType.NOTIFICATION.type -> actionConfig = NotificationActionConfig.parse(xcp, index)
                     ActionType.SNAPSHOT.type -> actionConfig = SnapshotActionConfig.parse(xcp, index)
+                    ActionType.ALLOCATION.type -> actionConfig = AllocationActionConfig.parse(xcp, index)
                     else -> throw IllegalArgumentException("Invalid field: [$fieldName] found in Action.")
                 }
             }
